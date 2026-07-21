@@ -1,9 +1,4 @@
-
-"""
-Shared state used by all LangGraph agents.
-"""
-
-from typing import TypedDict, List
+from typing import TypedDict, List, Optional
 
 
 class ResumeState(TypedDict):
@@ -11,14 +6,15 @@ class ResumeState(TypedDict):
     # Inputs
     resume: str
     target_role: str
+    requested_tasks: List[str]
 
-    # Intermediate outputs
-    summary: str
-    feedback: str
-    ats_score: str
-    suggestions: str
-
+    # Outputs
+    summary: Optional[str]
+    feedback: Optional[str]
+    ats_score: Optional[str]
+    suggestions: Optional[str]
     keyword_matches: List[str]
+    report: Optional[str]
 
-    # Final output
-    report: str
+    # Metadata
+    completed_tasks: List[str]
